@@ -43,6 +43,7 @@ import { DocumentSigningRejectDialog } from '~/components/general/document-signi
 import { DocumentSigningSignatureField } from '~/components/general/document-signing/document-signing-signature-field';
 import { DocumentSigningTextField } from '~/components/general/document-signing/document-signing-text-field';
 import PDFViewerLazy from '~/components/general/pdf-viewer/pdf-viewer-lazy';
+import { PlaqadSignFooter } from '~/components/general/plaqad-sign-footer';
 
 import { useRequiredDocumentSigningAuthContext } from './document-signing-auth-provider';
 import { DocumentSigningCompleteDialog } from './document-signing-complete-dialog';
@@ -355,6 +356,9 @@ export const DocumentSigningPageViewV1 = ({
             </div>
           </div>
         </div>
+
+        {/* Bottom padding on mobile keeps the footer clear of the fixed signing widget. */}
+        <PlaqadSignFooter placement="inline" className="mt-8 pb-32 md:pb-0" />
 
         <DocumentReadOnlyFields
           documentMeta={documentMeta || undefined}

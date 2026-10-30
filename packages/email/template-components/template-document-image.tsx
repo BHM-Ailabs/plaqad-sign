@@ -1,3 +1,5 @@
+import { PLAQAD_SIGN_NAME } from '@documenso/lib/constants/plaqad-sign';
+
 import { Column, Img, Row, Section } from '../components';
 import { getEmailAssetUrl } from '../utils/asset-url';
 
@@ -13,7 +15,11 @@ export const TemplateDocumentImage = ({ assetBaseUrl, className }: TemplateDocum
         <Column />
 
         <Column>
-          <Img className="mx-auto h-42" src={getEmailAssetUrl(assetBaseUrl, 'static/document.png')} alt="Documenso" />
+          <Img
+            className="mx-auto h-42"
+            src={getEmailAssetUrl(assetBaseUrl, 'static/document.png')}
+            alt={PLAQAD_SIGN_NAME}
+          />
         </Column>
 
         <Column />

@@ -1,3 +1,4 @@
+import { DOCUMENSO_WEBSITE_URL, PLAQAD_SIGN_NAME, PLAQAD_WEBSITE_URL } from '@documenso/lib/constants/plaqad-sign';
 import { Trans } from '@lingui/react/macro';
 import { Fragment } from 'react';
 
@@ -31,9 +32,10 @@ export const TemplateFooter = ({ isDocument = true, reportUrl }: TemplateFooterP
 
       {isDocument && !branding.brandingHidePoweredBy && (
         <Text className="my-4 text-base text-muted-foreground">
+          {/* The catalog rebrands this message's link text to "Plaqad Sign" in every locale. */}
           <Trans>
             This document was sent using{' '}
-            <Link className="text-primary" href="https://documen.so/mail-footer">
+            <Link className="text-primary" href={PLAQAD_WEBSITE_URL}>
               Documenso
             </Link>
             .
@@ -64,9 +66,20 @@ export const TemplateFooter = ({ isDocument = true, reportUrl }: TemplateFooterP
 
       {!branding.brandingEnabled && (
         <Text className="my-8 text-muted-foreground text-sm">
-          Documenso, Inc.
+          {PLAQAD_SIGN_NAME}
           <br />
-          2261 Market Street, #5211, San Francisco, CA 94114, USA
+          <Link className="text-muted-foreground" href={PLAQAD_WEBSITE_URL} target="_blank">
+            plaqad.com
+          </Link>
+        </Text>
+      )}
+
+      {!branding.brandingHidePoweredBy && (
+        <Text className="my-4 text-muted-foreground text-xs">
+          <Trans>Powered by</Trans>{' '}
+          <Link className="text-muted-foreground underline" href={DOCUMENSO_WEBSITE_URL} target="_blank">
+            Documenso
+          </Link>
         </Text>
       )}
     </Section>

@@ -1,5 +1,6 @@
 import { useCurrentEnvelopeRender } from '@documenso/lib/client-only/providers/envelope-render-provider';
 import { PDF_VIEWER_ERROR_MESSAGES } from '@documenso/lib/constants/pdf-viewer-i18n';
+import { DOCUMENSO_WEBSITE_URL } from '@documenso/lib/constants/plaqad-sign';
 import { mapSecondaryIdToDocumentId } from '@documenso/lib/utils/envelope';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
@@ -31,9 +32,9 @@ import { SignFieldTextDialog } from '~/components/dialogs/sign-field-text-dialog
 import { useEmbedSigningContext } from '~/components/embed/embed-signing-context';
 import { EnvelopeSignerPageRenderer } from '~/components/general/envelope-signing/envelope-signer-page-renderer';
 import { EnvelopePdfViewer } from '~/components/general/pdf-viewer/envelope-pdf-viewer';
+import { PlaqadSignFooter } from '~/components/general/plaqad-sign-footer';
 import { PublicLegalLinks } from '~/components/general/public-legal-links';
 
-import { BrandingLogo } from '../branding-logo';
 import { DocumentSigningAttachmentsPopover } from '../document-signing/document-signing-attachments-popover';
 import { EnvelopeItemSelector } from '../envelope-editor/envelope-file-selector';
 import EnvelopeSignerForm from '../envelope-signing/envelope-signer-form';
@@ -234,6 +235,8 @@ export const DocumentSigningPageViewV2 = () => {
               )}
 
               {!isEmbed && <PublicLegalLinks className="mt-4 justify-start px-4 pt-4" />}
+
+              {!isEmbed && <PlaqadSignFooter placement="inline" className="mt-3 justify-start px-4 text-left" />}
             </div>
           </div>
         </div>
@@ -279,6 +282,11 @@ export const DocumentSigningPageViewV2 = () => {
                 </div>
               )}
 
+              {/* Desktop shows the footer in the sidebar (unless collapsed); the spacer below keeps it clear of the fixed mobile widget. */}
+              {!isEmbed && (
+                <PlaqadSignFooter placement="inline" className={cn('mt-8 px-4', !isSidebarCollapsed && 'lg:hidden')} />
+              )}
+
               {/* Mobile widget - Additional padding to allow users to scroll */}
               <div className="block pb-28 lg:hidden">
                 <DocumentSigningMobileWidget />
@@ -286,15 +294,15 @@ export const DocumentSigningPageViewV2 = () => {
 
               {!hidePoweredBy && (
                 <a
-                  href="https://documenso.com"
+                  href={DOCUMENSO_WEBSITE_URL}
                   target="_blank"
                   className="fixed right-0 bottom-0 z-40 hidden cursor-pointer rounded-tl bg-primary px-2 py-1 font-medium text-primary-foreground text-xs opacity-60 hover:opacity-100 lg:block"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                 >
                   <span>
                     <Trans>Powered by</Trans>
-                  </span>
-                  <BrandingLogo className="ml-2 inline-block h-[14px]" />
+                  </span>{' '}
+                  <span>Documenso</span>
                 </a>
               )}
             </div>

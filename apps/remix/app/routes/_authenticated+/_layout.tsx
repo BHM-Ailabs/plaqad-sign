@@ -14,6 +14,7 @@ import { Header } from '~/components/general/app-header';
 import { GenericErrorLayout } from '~/components/general/generic-error-layout';
 import { OrganisationBillingBanner } from '~/components/general/organisations/organisation-billing-banner';
 import { OrganisationQuotaBanner } from '~/components/general/organisations/organisation-quota-banner';
+import { PlaqadSignFooter } from '~/components/general/plaqad-sign-footer';
 import { VerifyEmailBanner } from '~/components/general/verify-email-banner';
 import { authenticatedMiddleware } from '~/middleware/authenticated';
 import { TeamProvider } from '~/providers/team';
@@ -127,6 +128,10 @@ export default function Layout({ loaderData, params, matches }: Route.ComponentP
           >
             <Outlet />
           </main>
+
+          {!hideHeader && (
+            <PlaqadSignFooter className={cn('shrink-0 px-4', layoutMode === 'settings' ? 'py-3' : 'pb-8')} />
+          )}
         </div>
       </TeamProvider>
     </OrganisationProvider>

@@ -148,7 +148,7 @@ export default function SignIn({ loaderData }: Route.ComponentProps) {
               Don't have an account?{' '}
               <Link
                 to={returnTo ? `/signup?returnTo=${encodeURIComponent(returnTo)}` : '/signup'}
-                className="text-documenso-700 duration-200 hover:opacity-70"
+                className="text-documenso-700 duration-200 hover:opacity-70 dark:text-documenso-400"
               >
                 Sign up
               </Link>

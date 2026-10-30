@@ -53,8 +53,6 @@ export default function PublicProfilePage({ loaderData }: Route.ComponentProps) 
   const { profile, templates } = publicProfile;
 
   const { sessionData } = useOptionalSession();
-  const user = sessionData?.user;
-
   const canManageProfileSettings = (sessionData?.organisations ?? []).some((organisation) => {
     const team = organisation.teams.find((currentTeam) => currentTeam.id === profile.teamId);
 
@@ -125,14 +123,6 @@ export default function PublicProfilePage({ loaderData }: Route.ComponentProps) 
         <div className="mt-4 w-full max-w-xl border-t pt-4">
           <p className="max-w-[60ch] whitespace-pre-wrap break-words text-center text-muted-foreground text-sm leading-relaxed">
             <Trans>It looks like {publicProfile.name} hasn't added any documents to their profile yet.</Trans>{' '}
-            {!user?.id && (
-              <span className="mt-2 inline-block">
-                <Trans>
-                  While waiting for them to do so you can create your own Documenso account and get started with
-                  document signing right away.
-                </Trans>
-              </span>
-            )}
             {canManageProfileSettings && (
               <span className="mt-2 inline-block">
                 <Trans>

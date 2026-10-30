@@ -8,6 +8,8 @@ import { motion } from 'framer-motion';
 import { ChevronLeft } from 'lucide-react';
 import { Link, useNavigate } from 'react-router';
 
+import { PlaqadSignFooter } from '~/components/general/plaqad-sign-footer';
+
 type ErrorCodeMap = Record<
   number,
   { subHeading: MessageDescriptor; heading: MessageDescriptor; message: MessageDescriptor }
@@ -113,6 +115,8 @@ export const GenericErrorLayout = ({
           </div>
         </div>
       </div>
+
+      <PlaqadSignFooter placement="inline" className="absolute inset-x-0 bottom-0 px-4 pb-6" />
     </div>
   );
 };

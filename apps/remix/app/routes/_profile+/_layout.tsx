@@ -1,16 +1,18 @@
-import LogoIcon from '@documenso/assets/logo_icon.png';
 import { useOptionalSession } from '@documenso/lib/client-only/providers/session';
+import { PLAQAD_SIGN_NAME } from '@documenso/lib/constants/plaqad-sign';
 import { cn } from '@documenso/ui/lib/utils';
 import { Button } from '@documenso/ui/primitives/button';
 import { msg } from '@lingui/core/macro';
 import { Trans } from '@lingui/react/macro';
-import { ChevronLeft, PlusIcon } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { isRouteErrorResponse, Link, Outlet } from 'react-router';
 
 import { Header as AuthenticatedHeader } from '~/components/general/app-header';
 import { BrandingLogo } from '~/components/general/branding-logo';
+import { BrandingLogoIcon } from '~/components/general/branding-logo-icon';
 import { GenericErrorLayout } from '~/components/general/generic-error-layout';
+import { PlaqadSignFooter } from '~/components/general/plaqad-sign-footer';
 import { appMetaTags } from '~/utils/meta';
 
 import type { Route } from './+types/_layout';
@@ -50,40 +52,10 @@ export default function PublicProfileLayout() {
               to="/"
               className="rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:inline"
             >
-              <BrandingLogo className="hidden h-6 w-auto sm:block" />
+              <BrandingLogo role="img" aria-label={PLAQAD_SIGN_NAME} className="hidden h-6 w-auto sm:block" />
 
-              <img
-                src={LogoIcon}
-                alt="Documenso Logo"
-                width={48}
-                height={48}
-                className="h-10 w-auto sm:hidden dark:invert"
-              />
+              <BrandingLogoIcon role="img" aria-label={PLAQAD_SIGN_NAME} className="h-10 w-auto sm:hidden" />
             </Link>
-
-            <div className="flex flex-row items-center justify-center">
-              <p className="mr-4 text-muted-foreground">
-                <span className="text-sm sm:hidden">
-                  <Trans>Want your own public profile?</Trans>
-                </span>
-                <span className="hidden text-sm sm:block">
-                  <Trans>Like to have your own public profile with agreements?</Trans>
-                </span>
-              </p>
-
-              <Button asChild variant="secondary">
-                <Link to="/signup">
-                  <div className="hidden flex-row items-center sm:flex">
-                    <PlusIcon className="mr-1 h-5 w-5" />
-                    <Trans>Create now</Trans>
-                  </div>
-
-                  <span className="sm:hidden">
-                    <Trans>Create</Trans>
-                  </span>
-                </Link>
-              </Button>
-            </div>
           </div>
         </header>
       )}
@@ -91,6 +63,8 @@ export default function PublicProfileLayout() {
       <main className="my-8 px-4 md:my-12 md:px-8">
         <Outlet />
       </main>
+
+      <PlaqadSignFooter className="px-4 pb-8" />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { PLAQAD_SIGN_NAME } from '@documenso/lib/constants/plaqad-sign';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 
@@ -24,7 +25,11 @@ export const AdminUserCreatedTemplate = ({
         <Section>
           <Container className="mx-auto mt-8 mb-2 max-w-xl rounded-lg border border-border border-solid p-4 backdrop-blur-sm">
             <Section>
-              <Img src={getEmailAssetUrl(assetBaseUrl, 'static/logo.png')} alt="Documenso Logo" className="mb-4 h-6" />
+              <Img
+                src={getEmailAssetUrl(assetBaseUrl, 'static/logo.png')}
+                alt={PLAQAD_SIGN_NAME}
+                className="mb-4 h-6"
+              />
 
               <TemplateAdminUserCreated resetPasswordLink={resetPasswordLink} assetBaseUrl={assetBaseUrl} />
             </Section>

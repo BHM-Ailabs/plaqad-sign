@@ -1,6 +1,7 @@
 import backgroundPattern from '@documenso/assets/images/background-pattern.png';
 import { Outlet } from 'react-router';
 
+import { PlaqadSignFooter } from '~/components/general/plaqad-sign-footer';
 import { PublicLegalLinks } from '~/components/general/public-legal-links';
 
 export default function Layout() {
@@ -19,13 +20,14 @@ export default function Layout() {
           />
         </div>
 
-        <div className="relative w-full flex items-center justify-center">
+        <div className="relative flex w-full items-center justify-center">
           <Outlet />
         </div>
       </div>
 
-      <footer className="z-10 mt-8 w-full">
+      <footer className="z-10 mt-8 flex w-full flex-col items-center gap-y-3">
         <PublicLegalLinks />
+        <PlaqadSignFooter />
       </footer>
     </main>
   );

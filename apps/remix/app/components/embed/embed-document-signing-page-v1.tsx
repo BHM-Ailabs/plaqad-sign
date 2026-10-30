@@ -31,7 +31,6 @@ import { type Field, RecipientRole, SigningStatus } from '@prisma/client';
 import { LucideChevronDown, LucideChevronUp } from 'lucide-react';
 import { useEffect, useId, useLayoutEffect, useMemo, useState } from 'react';
 
-import { BrandingLogo } from '~/components/general/branding-logo';
 import PDFViewerLazy from '~/components/general/pdf-viewer/pdf-viewer-lazy';
 import { injectCss } from '~/utils/css-vars';
 import { getSigningCompletionErrorMessage } from '~/utils/toast-error-messages';
@@ -608,8 +607,8 @@ export const EmbedSignDocumentV1ClientPage = ({
           <div className="fixed bottom-0 left-0 z-40 rounded-tr bg-primary px-2 py-1 font-medium text-primary-foreground text-xs opacity-60 hover:opacity-100">
             <span>
               <Trans>Powered by</Trans>
-            </span>
-            <BrandingLogo className="ml-2 inline-block h-[14px]" />
+            </span>{' '}
+            <span>Documenso</span>
           </div>
         )}
       </div>

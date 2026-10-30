@@ -1,3 +1,5 @@
+import { SUPPORT_EMAIL } from '@documenso/lib/constants/app';
+import { PLAQAD_SIGN_NAME } from '@documenso/lib/constants/plaqad-sign';
 import { msg } from '@lingui/core/macro';
 import { useLingui } from '@lingui/react';
 
@@ -11,7 +13,7 @@ export type AccountDisabledEmailTemplateProps = Partial<TemplateAccountDisabledP
 
 export const AccountDisabledEmailTemplate = ({
   assetBaseUrl = 'http://localhost:3002',
-  supportEmail = 'support@documenso.com',
+  supportEmail = SUPPORT_EMAIL,
 }: AccountDisabledEmailTemplateProps) => {
   const { _ } = useLingui();
 
@@ -26,7 +28,11 @@ export const AccountDisabledEmailTemplate = ({
         <Section>
           <Container className="mx-auto mt-8 mb-2 max-w-xl rounded-lg border border-border border-solid p-4 backdrop-blur-sm">
             <Section>
-              <Img src={getEmailAssetUrl(assetBaseUrl, 'static/logo.png')} alt="Documenso Logo" className="mb-4 h-6" />
+              <Img
+                src={getEmailAssetUrl(assetBaseUrl, 'static/logo.png')}
+                alt={PLAQAD_SIGN_NAME}
+                className="mb-4 h-6"
+              />
 
               <TemplateAccountDisabled assetBaseUrl={assetBaseUrl} supportEmail={supportEmail} />
             </Section>

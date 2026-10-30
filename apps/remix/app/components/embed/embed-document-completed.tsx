@@ -1,4 +1,5 @@
 import signingCelebration from '@documenso/assets/images/signing-celebration.png';
+import { PLAQAD_SIGN_NAME } from '@documenso/lib/constants/plaqad-sign';
 import { SigningCard3D } from '@documenso/ui/components/signing-card';
 import { Trans } from '@lingui/react/macro';
 import type { Signature } from '@prisma/client';
@@ -15,7 +16,7 @@ export const EmbedDocumentCompleted = ({ name, signature }: EmbedDocumentComplet
       <div className="embed--DocumentCompletedCard w-full max-w-sm md:max-w-md">
         <SigningCard3D
           className="mx-auto w-full"
-          name={name || 'Documenso'}
+          name={name || PLAQAD_SIGN_NAME}
           signature={signature}
           signingCelebrationImage={signingCelebration}
         />
@@ -25,7 +26,7 @@ export const EmbedDocumentCompleted = ({ name, signature }: EmbedDocumentComplet
         <Trans>Document Completed</Trans>
       </h2>
 
-      <div className="embed--DocumentCompletedStatus mt-4 flex items-center text-center text-documenso-700">
+      <div className="embed--DocumentCompletedStatus mt-4 flex items-center text-center text-documenso-700 dark:text-documenso-400">
         <CheckCircle2Icon className="mr-2 h-5 w-5" />
         <span className="text-sm">
           <Trans>No further action is required</Trans>

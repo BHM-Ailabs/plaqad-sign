@@ -1,0 +1,20 @@
+Plaqad Sign
+Modified build of Documenso Community Edition v2.21.1.
+
+Documenso: Copyright (c) Documenso, Inc. and contributors.
+https://github.com/documenso/documenso
+Licensed under the GNU Affero General Public License v3.0 (see LICENSE).
+
+Modifications: Copyright (c) 2026 Plaqad (BHM-Ailabs).
+Modified on 2026-10-30 to apply Plaqad Sign branding (name, logos, icons,
+colours, page metadata, email presentation, default support address and PDF
+signature reason) and to add "Powered by Documenso" attribution and a link to
+this source code. Signing, sealing, audit, API and data-handling behaviour are
+unchanged. The modifications are licensed under AGPL-3.0.
+
+packages/ee is licensed separately under the Documenso Commercial License
+(packages/ee/LICENSE). Plaqad Sign does not enable or modify Enterprise Edition
+features.
+
+Plaqad Sign is operated by Plaqad and is not affiliated with or endorsed by
+Documenso, Inc. References to Documenso identify the upstream software.

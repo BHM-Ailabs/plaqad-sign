@@ -1,7 +1,8 @@
 import { env } from '../utils/env';
+import { PLAQAD_SIGN_NAME } from './plaqad-sign';
 
-export const FROM_ADDRESS = env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'noreply@documenso.com';
-export const FROM_NAME = env('NEXT_PRIVATE_SMTP_FROM_NAME') || 'Documenso';
+export const FROM_ADDRESS = env('NEXT_PRIVATE_SMTP_FROM_ADDRESS') || 'signing@mail.plaqad.com';
+export const FROM_NAME = env('NEXT_PRIVATE_SMTP_FROM_NAME') || PLAQAD_SIGN_NAME;
 
 export const DOCUMENSO_INTERNAL_EMAIL = {
   name: FROM_NAME,
