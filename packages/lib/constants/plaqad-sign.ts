@@ -7,7 +7,7 @@
  */
 export const PLAQAD_SIGN_NAME = 'Plaqad Sign';
 
-export const PLAQAD_SIGN_RELEASE = 'v2.21.1-plaqad.1';
+export const PLAQAD_SIGN_RELEASE = 'v2.21.1-plaqad.2';
 
 export const PLAQAD_SIGN_SOURCE_URL = `https://github.com/BHM-Ailabs/plaqad-sign/tree/${PLAQAD_SIGN_RELEASE}`;
 
