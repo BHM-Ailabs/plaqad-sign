@@ -15,8 +15,9 @@ Plaqad changes presentation only:
 - "Powered by Documenso" attribution and an in-product link to this source code;
 - default support address and PDF signature reason.
 
-Signing, sealing, audit evidence, the API, webhooks and data handling are unchanged from upstream. The exact
-modifications are the commits after `chore: import Documenso Community Edition v2.21.1`.
+Signing, sealing, audit evidence, the API, webhooks and data handling are unchanged from upstream. This repository
+is a fork of Documenso; the exact modifications are the commits on top of upstream tag `v2.21.1`
+(`git log v2.21.1..main`).
 
 ## Source code offer
 
@@ -28,10 +29,11 @@ links to its exact tag from the product footer through `PLAQAD_SIGN_SOURCE_URL` 
 
 1. Set `PLAQAD_SIGN_RELEASE` in `packages/lib/constants/plaqad-sign.ts` to the new tag, commit and push `main`.
 2. Tag that commit with the same name and push the tag.
-3. From a clean checkout of the tag, build and push the image with Fly's remote builder:
+3. From a clean checkout of the tag, build and push the image with Fly's remote builder. `fly.build.toml` builds
+   from source; the production app config pins an image, so do not build with it:
 
    ```sh
-   fly deploy --build-only --push -a plaqad-sign --dockerfile docker/Dockerfile --image-label <tag>
+   fly deploy --build-only --push -c fly.build.toml --image-label <tag>
    ```
 
 4. Pin `registry.fly.io/plaqad-sign:<tag>@sha256:<digest>` in Plaqad Talent's `deploy/documenso/fly/fly.toml` and
@@ -39,11 +41,10 @@ links to its exact tag from the product footer through `PLAQAD_SIGN_SOURCE_URL` 
 
 ## Upgrading Documenso
 
-1. Fetch the new upstream tag: `git fetch upstream tag <upstream-tag>`.
-2. On a branch from `main`, replace the tree with the upstream tag and commit it as the new import:
-   `git rm -r -q . && git checkout <upstream-tag> -- . && git commit -m "chore: import Documenso Community Edition <version>"`.
-3. Cherry-pick the Plaqad commits made after the previous import, resolving conflicts.
-4. Bump `PLAQAD_SIGN_RELEASE` and release as above. Upstream database migrations run on boot, so follow the Talent
+1. Fetch upstream tags: `git fetch upstream --tags` (`upstream` = <https://github.com/documenso/documenso>).
+2. On a branch from `main`, rebase the Plaqad commits onto the new tag, resolving conflicts:
+   `git rebase --onto <new-upstream-tag> <previous-upstream-tag>`.
+3. Bump `PLAQAD_SIGN_RELEASE` and release as above. Upstream database migrations run on boot, so follow the Talent
    runbook's snapshot-before-upgrade step.
 
 ## Development

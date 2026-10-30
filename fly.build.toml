@@ -1,0 +1,8 @@
+# Builds and pushes the Plaqad Sign image from this source:
+#   fly deploy --build-only --push -c fly.build.toml --image-label <release tag>
+# Production deployment configuration lives in Plaqad Talent (deploy/documenso/fly/fly.toml).
+app = "plaqad-sign"
+primary_region = "lhr"
+
+[build]
+  dockerfile = "docker/Dockerfile"
